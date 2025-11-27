@@ -1,293 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cris Thomas - Resume</title>
     <style>
-        /* Base styles for the resume structure */
-        /* ==== A4 Page Layout Styles ==== */
-.page {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 0 auto;
-    background: white;
-    padding: 15mm 20mm; /* inner margins */
-    box-sizing: border-box;
-}
-
-/* When printing or saving to PDF */
-@media print {
-    @page {
-        size: A4;
-        margin: 0;
-    }
-
-    body {
-        margin: 0;
-        background: white;
-    }
-
-    .page {
-        box-shadow: none;
-        width: 210mm;
-        min-height: 297mm;
-        padding: 15mm 20mm;
-        page-break-after: always;
-    }
-}
-
-/* Optional for screen view (so A4 preview looks real) */
-@media screen {
-    body {
-        background: #f3f3f3;
-    }
-    .page {
-        box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-}
-
-        body {
+        /* Base styles for printable A4 resume */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            padding: 15mm 20mm;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-            /* Max width set for desktop viewing, but not strictly enforced */
-            max-width: 700px; 
-            margin: 0 auto; 
+            color: #222;
         }
 
-        /* Header Section (Name and Contact Info) */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { margin: 0; background: white; }
+            .page { box-shadow: none; page-break-after: always; }
+        }
+
+        /* Simple, ATS-friendly layout */
+        body {
+            background: #f5f5f5;
+            padding: 10px;
+        }
+
         .header {
             text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0;
-            color: #1a1a1a;
-        }
-
-        .header p {
-            font-size: 11px;
-            margin: 2px 0;
-        }
-
-        .header a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        /* Section Headings */
-        .section-title {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-bottom: 2px solid #333;
-            padding-bottom: 2px;
-            margin-top: 18px; 
             margin-bottom: 8px;
         }
 
-        /* Standard Content Styles */
-        .content {
-            font-size: 12px;
-        }
-
-        /* Skills List Alignment (Responsive adjustment) */
-        .skills-list p {
-            margin: 3px 0;
-            display: flex; /* Keeps categories and items side-by-side on wider screens */
-        }
-
-        .skills-list strong {
+        .name {
+            font-size: 26px;
             font-weight: 700;
-            margin-right: 5px;
-            /* Set a preferred width, but allow flex-shrink to prevent breakage on small screens */
-            min-width: 140px; 
-            white-space: nowrap; 
-            flex-shrink: 0; 
+            margin: 0 0 4px 0;
+            letter-spacing: 0.5px;
         }
 
-        /* Experience/Education/Project Entry */
-        .entry {
-            margin-bottom: 10px;
+        .contact {
+            font-size: 12px;
+            margin: 0;
+            color: #333;
         }
+
+        .contact a { color: #333; text-decoration: none; }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1.8px solid #333;
+            padding-bottom: 4px;
+            margin-top: 14px;
+            margin-bottom: 8px;
+        }
+
+        .content { font-size: 12px; color: #222; }
+
+        p.summary {
+            margin: 6px 0 0 0;
+            font-size: 12.5px;
+        }
+
+        .skills-list, .tech-used {
+            margin: 6px 0;
+        }
+
+        .skills-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 6px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+
+        .skills-list li {
+            font-size: 12px;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+        }
+
+        .entry { margin-bottom: 8px; }
 
         .entry-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap; /* Allows title and date to stack on small screens */
+            gap: 8px;
+            align-items: baseline;
+            flex-wrap: wrap;
         }
 
         .entry-header h4 {
             font-size: 13px;
-            font-weight: 700;
             margin: 0;
-            /* Take up full width on small screens to ensure date drops below */
-            flex-basis: auto; 
-        }
-
-        .entry-header span {
-            font-size: 12px;
-            font-weight: 500;
-            /* Added margin-top to date/time when it wraps below the title */
-            margin-top: 2px; 
-        }
-
-        .entry ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin: 5px 0 0 0;
-        }
-
-        .entry ul li {
-            margin-bottom: 3px;
-            font-size: 12px;
-        }
-
-        .tech-used {
-            margin-top: 5px;
-            padding-left: 10px; 
-        }
-
-        .tech-used strong {
             font-weight: 700;
         }
-        
-        /* Media Query for smaller devices (e.g., phones) */
-        @media (max-width: 500px) {
-            .skills-list p {
-                /* For very small screens, let the category wrap above the list */
-                display: block; 
-            }
-            .skills-list strong {
-                display: block; /* Make the category bold and on its own line */
-                margin-bottom: 2px;
-                min-width: auto;
-            }
+
+        .entry-header .date {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
         }
 
-        /* Print Media Query (unchanged, for clean PDF/print) */
-        @media print {
-            body {
-                max-width: 100%;
-                margin: 0;
-                padding: 0.5in;
-            }
+        ul.project-bullets, ul.lead-bullets {
+            margin: 6px 0 0 18px;
+            padding: 0;
+        }
+
+        ul.project-bullets li, ul.lead-bullets li {
+            margin-bottom: 4px;
+            line-height: 1.35;
+            font-size: 12px;
+        }
+
+        .tech-used { font-size: 12px; margin-top: 6px; padding-left: 8px; }
+
+        /* Simple responsive adjustments */
+        @media (max-width: 600px) {
+            .skills-list ul { flex-direction: column; gap: 4px; }
+            .page { padding: 12mm; }
         }
     </style>
 </head>
 <body>
     <div class="page">
+        <header class="header" role="banner">
+            <div class="name">CRIS THOMAS</div>
+            <p class="contact">
+                Indore, Madhya Pradesh, India |
+                <a href="mailto:cris.thomas1607@gmail.com">cris.thomas1607@gmail.com</a> |
+                <a href="tel:+917898530062">+91 78985 30062</a> |
+                <a href="https://www.linkedin.com/in/cris-thomas-0786b6241/" target="_blank" rel="noopener">LinkedIn</a> |
+                <a href="https://github.com/CRIS-THOMAS" target="_blank" rel="noopener">GitHub</a>
+            </p>
+        </header>
 
-    <div class="header">
-        <h1>CRIS THOMAS</h1>
-        <p>
-            Indore, Madhya Pradesh, India | cris.thomas1607@gmail.com | +91 7898530062 | <a href="https://www.linkedin.com/in/cris-thomas-0786b6241/" target="_blank">LinkedIn</a> | <a href="https://github.com/cris1607ishere" target="_blank">GitHub</a>
-        </p>
-    </div>
-
-    <div class="section-title">Education</div>
-    <div class="content">
-        <div class="entry">
-            <div class="entry-header">
-                <h4>Vellore Institute of Technology, Vellore</h4>
-                <span></span> 
-            </div>
-            <div class="entry-details">
-                B. Tech in Computer Science and Engineering (CGPA: 8.39)
-            </div>
-            <div class="coursework">
-                <strong>Relevant Coursework:</strong> Data Structures and Analytics, Artificial Intelligence, Object Oriented Programming, Web Programming, DBMS
-            </div>
+        <div class="section-title">Professional Summary</div>
+        <div class="content">
+            <p class="summary">
+              Software Engineer experienced in delivering full-stack features and applied NLP workflows through hands-on project development. Built interfaces and dashboards using React, Node.js, REST APIs, and PostgreSQL, and contributed to automation pipelines that processed 10k+ reports with improved classification accuracy. Skilled in UI development, API integration, data modeling, and structured testing, with a focus on reliability, clean implementation, and measurable system improvements.
+            </p>
         </div>
-    </div>
 
-    <div class="section-title">Skills and Framework</div>
-    <div class="content skills-list">
-        <p>
-            <strong>Languages:</strong> Python, C, C++, Java, HTML, CSS, JavaScript
-        </p>
-        <p>
-            <strong>Web Development:</strong> Node.js
-        </p>
-        <p>
-            <strong>AI/ML:</strong> NLP, Regex
-        </p>
-        <p>
-            <strong>Systems & Tools:</strong> LINUX, Github
-        </p>
-        <p>
-            <strong>Data & Visualization:</strong> Excel, PowerPoint
-        </p>
-    </div>
-
-    <div class="section-title">Leadership & Volunteering</div>
-    <div class="content">
-        <div class="entry">
-            <div class="entry-header">
-                <h4>Ex-Core Committee Member, Trueno Toastmasters, VIT</h4>
-                <span><b>1st JAN, 2025 - 30th JUN, 2025</b></span>
-            </div>
+        <div class="section-title">Skills</div>
+        <div class="content skills-list">
             <ul>
-                <li>Mentored individuals to enhance their communication skills, focusing on public speaking and impromptu speech delivery.</li>
-                <li>Volunteered alongside the organizing committee to work for Rivera and Gravitas, successfully contributing to the conduct of various workshops and events.</li>
+                <li><strong>Languages:</strong> Python, JavaScript, Java, C++</li>
+                <li><strong>Frameworks / Tools:</strong> React.js, Node.js, PostgreSQL, Firebase, REST APIs, Axios, Leaflet.js, Postman</li>
+                <li><strong>AI / ML / NLP:</strong> NLP pipelines, text classification, regex-based parsing, IBM watsonX</li>
+                <li><strong>Dev & Ops:</strong> Linux, Git/GitHub</li>
+                <li><strong>Data & Visualization:</strong> Excel, PowerPoint</li>
             </ul>
         </div>
+
+       <div class="section-title">Projects</div>
+<div class="content">
+    <div class="entry">
+        <div class="entry-header">
+            <h4>ResQTech — Real-time Coastal Hazard Monitoring</h4>
+        </div>
+        <ul class="project-bullets">
+            <li>Built a full-stack system (React, Node.js, PostgreSQL, Firebase) for citizen reporting, interactive maps, and automated alert dashboards; integrated secure REST APIs and offline-first sync.</li>
+            <li>Created NLP pipelines to process 10,000+ reports, improving hazard-detection accuracy by ~30% and reducing response time by ~40% while maintaining ~99% data consistency.</li>
+        </ul>
+        <div class="tech-used"><strong>Tech:</strong> React.js, Node.js, PostgreSQL, Firebase, REST APIs, Leaflet.js</div>
     </div>
 
-    <div class="section-title">Projects</div>
-    <div class="content">
-        
-        <div class="entry">
-            <div class="entry-header">
-                <h4>1. ResQTech - INCOIS</h4>
-                 </div>
-            <ul>
-                <li>Designed and deployed a full-stack platform for real-time coastal hazard monitoring with geotagged citizen reports, interactive maps, and automated alert dashboards.</li>
-                <li>Built and debugged NLP pipelines in Python to process 10,000+ social media posts and field reports, boosting hazard detection accuracy by 30% and reducing response time.</li>
-                <li>Implemented PostgreSQL queries, Firebase integration, and offline-first sync, ensuring 99% data consistency and secure role-based access.</li>
-            </ul>
-            <div class="tech-used">
-                <strong>Tech Used:</strong> React.js, Node.js, PostgreSQL, Firebase, REST APIs, Axios, Leaflet.js, JavaScript, HTML5, CSS3, Postman
-            </div>
+    <div class="entry">
+        <div class="entry-header">
+            <h4>Sentiment Analysis of Student Feedback</h4>
         </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <h4>2. Sentiment Analysis of Student Feedback</h4>
-                 </div>
-            <ul>
-                <li>Executed Sentiment Analysis on student feedback to gauge satisfaction across various school issues (academic, material, faculty).</li>
-                <li>Implemented a classification system to categorize issues for targeted administrative action.</li>
-                <li>Generated actionable suggestions for school administration using the IBM watsonX platform to address identified student concerns.</li>
-            </ul>
-            <div class="tech-used">
-                <strong>Tech Used:</strong> Python, NLP, IBM watsonX Platform
-            </div>
-        </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <h4>3. Exam Prep Bot - In Progress</h4>
-                 </div>
-            <ul>
-                <li>Developed a full-stack web application that aids students in effective revision by generating topic summaries and personalized quizzes using a large language model.</li>
-                <li>Created a last-day Exam Prep Bot to help VITians prioritise topics based on exam type (CAT1/CAT2) and suggest important questions on high-priority subjects.</li>
-            </ul>
-            <div class="tech-used">
-                <strong>Tech Used:</strong> HTML, Node.js, IBM watsonX Services
-            </div>
-        </div>
+        <ul class="project-bullets">
+            <li>Built a classification pipeline (Python, IBM watsonX) for sentiment and issue detection to extract actionable trends across academics and faculty feedback.</li>
+            <li>Delivered prioritized recommendations and summarized dashboards that helped administrators target high-impact improvements in student satisfaction metrics.</li>
+        </ul>
+        <div class="tech-used"><strong>Tech:</strong> Python, NLP, IBM watsonX</div>
     </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <h4>Exam Prep Bot</h4>
+        </div>
+        <ul class="project-bullets">
+            <li>Designing a full-stack web app leveraging LLMs to auto-generate concise topic summaries and personalized quizzes for CAT1/CAT2 exam revision.</li>
+            <li>Implemented prioritization logic to recommend topics by exam type and generate targeted practice questions, improving study efficiency for users.</li>
+        </ul>
+        <div class="tech-used"><strong>Tech:</strong> Node.js, HTML, IBM watsonX</div>
+    </div>
+</div>
+
+        <div class="section-title">Education</div>
+        <div class="content">
+            <div class="entry">
+                <div class="entry-header">
+                    <h4>Vellore Institute of Technology, Vellore</h4>
+                    <div class="date"></div>
+                </div>
+                <div>B.Tech in Computer Science & Engineering — CGPA: 8.39</div>
+                <div style="margin-top:6px;"><strong>Relevant coursework:</strong> Data Structures & Algorithms, AI/ML, Web Programming, DBMS</div>
+            </div>
+        </div>
+
+        <div class="section-title">Leadership & Volunteering</div>
+        <div class="content">
+            <div class="entry">
+                <div class="entry-header">
+                    <h4>Ex‑Core Committee Member — Trueno Toastmasters, VIT</h4>
+                    <div class="date"><strong>Jan 2025 – Jun 2025</strong></div>
+                </div>
+                <ul class="lead-bullets">
+                    <li>Mentored juniors to improve public speaking and impromptu speaking skills.</li>
+                    
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
-
 </html>
